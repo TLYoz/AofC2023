@@ -1,3 +1,6 @@
 /src/obj/
 /src/.idea/
 /src/bin/
+/tests/UnitTests/obj
+/packages
+/.idea
