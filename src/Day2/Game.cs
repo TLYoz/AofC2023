@@ -16,6 +16,6 @@ public class Game
     private static (int gameNumber, string[] drawStrings) Split(string gameString)
     {
         var split = gameString.Split(":");
-        return (int.Parse(split[0].Remove(0, 5)), split[1].Split(";"));
+        return (int.Parse(split[0].AsSpan(5)), split[1].Split(";"));
     }
 }
