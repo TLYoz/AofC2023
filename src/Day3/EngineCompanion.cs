@@ -26,12 +26,15 @@ public static class EngineCompanion
         return locations;
     }
 
-    public static int SumOfGearRatios(this List<PartNumber> partNumbers,IEnumerable<Coordinate> gearLocations) =>
-        gearLocations.Sum(gl =>
+    public static int SumOfGearRatios(this List<PartNumber> partNumbers,IEnumerable<Coordinate> gearLocations)
+    {
+        return gearLocations.Sum(gl =>
         {
-            var enumerable = partNumbers.Where(pn => pn.IsAdjacent( gl ));
-            return enumerable.Count() == 2 ? enumerable.First().Number * enumerable.Last().Number : 0;
+            var enumerable = partNumbers.Where(pn => pn.IsAdjacent(gl));
+            var numbers = enumerable as PartNumber[] ?? enumerable.ToArray();
+            return numbers.Count() == 2 ? numbers.First().Number * numbers.Last().Number : 0;
         });
+    }
 
     public static int SumOfPartNumbers(this List<PartNumber> partNumbers,List<Coordinate> symbolLocations) => 
         partNumbers.Where(pn=>pn.IsReal(symbolLocations)).Select(pn => pn.Number).Sum();

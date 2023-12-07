@@ -7,6 +7,7 @@ using AdventOfCode.Day3;
 using AdventOfCode.Day4;
 using AdventOfCode.Day5;
 using AdventOfCode.Day6;
+using AdventOfCode.Day7;
 
 // replace with your unique session id from the AoC cookie
 var sessionId = "53616c7465645f5f384bfbe287e9d2ab6b964c8dbf338344dde6c35f7a19c5fcecc8b56b720cac2f3fa50966289dac768857ec4ff13af1aa380fbfdb8619361c";
@@ -79,6 +80,19 @@ Console.WriteLine($"Day 5: Part 2: Minimum Distance from Seed Ranges {almanac.In
 
 var data6 = await dataRetriever.GetData(6);
 
-Console.WriteLine($"Day 6: Part 1: Multiple of all races {data6.GetRaceData().Aggregate(1,(count, data) => count *  data.GetWays().Count())}");
+Console.WriteLine($"Day 6: Part 1: Multiple of all races {data6.GetRaceData().Aggregate(1,(count, data) => count *  data.GetWays())}");
+//Your puzzle answer was 2344708.
+Console.WriteLine($"Day 6: Part 2: Multiple of all races different Interpretation {data6.GetRaceData2().GetWays()}");
+// Your puzzle answer was 30125202.
 
-Console.WriteLine($"Day 6: Part 2: Multiple of all races {data6.GetRaceData2().GetWays().Count()}");
+
+// Day 7
+var data7 = await dataRetriever.GetDataLines(7);
+
+var hands = data7.ToHands();
+
+Console.WriteLine($"Day 7: Part 1: Hands {hands.RankExcludingJokers().Sum()}");
+//Day 7: Part 1: Hands 250474325
+
+Console.WriteLine($"Day 7: Part 2: Hands with wild cards {hands.RankIncludingJokers().Sum()}");
+//Day 7: Part 2: Hands with wild cards 248909434

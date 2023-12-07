@@ -2,15 +2,18 @@
 
 public record RaceData(long Time, long Distance)
 {
-    public IEnumerable<RaceData> GetWays()
+    public int GetWays()
     {
+        var i = 0;
         for (var way = 1; way < Time; way++)
         {
             var speed = way;
             var remainingTime = Time - way;
             var distance = speed * remainingTime;
-            if(distance>Distance)
-               yield return this with { Distance = distance };
+            if (distance > Distance)
+                i++;
         }
+
+        return i;
     }
 }
