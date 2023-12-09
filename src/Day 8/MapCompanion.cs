@@ -4,7 +4,7 @@ namespace AdventOfCode.Day_8;
 
 public static class MapCompanion
 {
-    private static readonly Regex regex = new("^([A-Z]{3}) = \\(([A-Z]{3}), ([A-Z]{3})\\)$");
+    private static readonly Regex regex = new("^([0-9A-Z]{3}) = \\(([0-9A-Z]{3}), ([0-9A-Z]{3})\\)");
     public static Maps ToMaps(this string[] lines)
     {
         var leftRights = lines.First().Trim();
