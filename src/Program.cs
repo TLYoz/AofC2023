@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode;
+using AdventOfCode.Day_8;
 using AdventOfCode.Day1;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
@@ -8,6 +9,7 @@ using AdventOfCode.Day4;
 using AdventOfCode.Day5;
 using AdventOfCode.Day6;
 using AdventOfCode.Day7;
+using AdventOfCode.Day9;
 
 // replace with your unique session id from the AoC cookie
 var sessionId = "53616c7465645f5f384bfbe287e9d2ab6b964c8dbf338344dde6c35f7a19c5fcecc8b56b720cac2f3fa50966289dac768857ec4ff13af1aa380fbfdb8619361c";
@@ -96,3 +98,26 @@ Console.WriteLine($"Day 7: Part 1: Hands {hands.RankExcludingJokers().Sum()}");
 
 Console.WriteLine($"Day 7: Part 2: Hands with wild cards {hands.RankIncludingJokers().Sum()}");
 //Day 7: Part 2: Hands with wild cards 248909434
+
+// Day 8
+
+var data8 = await dataRetriever.GetDataLines(8);
+
+var maps = data8.ToMaps();
+
+Console.WriteLine($"Day 8: Part 1: Steps {maps.Steps()}");
+//Your puzzle answer was 22411.
+Console.WriteLine($"Day 8: Part 2: Steps {maps.GhostSteps()}");
+//Your puzzle answer was 11188774513823.
+
+// Day 9 
+
+var data9 = await dataRetriever.GetDataLines(9);
+
+var reports = data9.Select(l => l.ToReport()).ToArray();
+var sum = reports.Sum(i => i.NextValue);
+
+Console.WriteLine($"Day 9: Part 1: Sum of Extrapolates {sum}");
+//Your puzzle answer was 2175229206
+Console.WriteLine($"Day 9: Part 2: Sum of Extrapolates Backwards {reports.Sum(i => i.PreviousValue)}");
+//Your puzzle answer was 942.
